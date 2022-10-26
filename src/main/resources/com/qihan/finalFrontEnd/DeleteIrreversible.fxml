@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qihan.finalFrontEnd.DeleteIrreversiblePageController">
+   <left>
+      <AnchorPane prefHeight="308.0" prefWidth="181.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="brandingImageView" fitHeight="475.0" fitWidth="287.0" layoutX="-41.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/DeleteUserAndCloudDataPageLeft.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="308.0" prefWidth="374.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="lockImageView" fitHeight="98.0" fitWidth="128.0" layoutX="111.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/DeleteUserAndCloudDataPageRight.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="returnButton" layoutX="46.0" layoutY="367.0" mnemonicParsing="false" onAction="#returnButtonOnAction" prefHeight="24.0" prefWidth="270.0" style="-fx-background-color: #f7cbc7;" text="Return" textFill="#f5320b">
+               <font>
+                  <Font name="Times New Roman Bold" size="13.0" />
+               </font>
+            </Button>
+            <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="42.0" layoutY="194.0" prefHeight="18.0" prefWidth="288.0" textFill="#da0a0a">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Button fx:id="deleteUserAndCloudDataButton" layoutX="46.0" layoutY="327.0" mnemonicParsing="false" onAction="#deleteUserAndCloudDataButtonOnAction" prefHeight="24.0" prefWidth="270.0" style="-fx-background-color: #f7cbc7;" text="Say good bye to the memory" textFill="#f5320b">
+               <font>
+                  <Font name="Times New Roman Bold" size="13.0" />
+               </font>
+            </Button>
+            <Label fx:id="timeNowLabel" layoutX="42.0" layoutY="446.0" onMouseEntered="#timeNowButtonOnAction" onMouseExited="#timeNowButtonNoAction" prefHeight="14.0" prefWidth="278.0" text="Pending your mouse here and you can see the time now.">
+               <font>
+                  <Font name="Times New Roman" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="139.0" text="user_id">
+               <font>
+                  <Font name="Times New Roman Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="56.0" layoutY="191.0" text="email_address">
+               <font>
+                  <Font name="Times New Roman Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="idTextField" layoutX="54.0" layoutY="161.0" prefHeight="22.0" prefWidth="255.0" promptText="Enter your user_id given when you registered">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="emailTextField" layoutX="54.0" layoutY="216.0" prefHeight="22.0" prefWidth="255.0" promptText="Enter your user_id given when you registered">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="confirmTextField" layoutX="54.0" layoutY="249.0" prefHeight="22.0" prefWidth="255.0" promptText="To confirm, enter &quot;The past is past&quot;. ">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="12.0" />
+               </font>
+            </TextField>
+            <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="292.0" prefHeight="15.0" prefWidth="247.0" textFill="RED">
+               <font>
+                  <Font name="Times New Roman Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="475.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qihan.finalFrontEnd.CloudDataUploadPageController">
+   <children>
+      <AnchorPane prefHeight="82.0" prefWidth="531.0" style="-fx-background-color: #E96151;">
+         <children>
+            <Label fx:id="timeNowLabel" layoutX="106.0" layoutY="14.0" onMouseEntered="#timeNowButtonOnAction" onMouseExited="#timeNowButtonNoAction" text="Pending your mouse here and you can see the time now." textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="welcomeLabel" layoutX="106.0" layoutY="48.0" prefHeight="20.0" prefWidth="310.0" textFill="#fdd0ab">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+
+      <Button fx:id="returnButton" alignment="CENTER" contentDisplay="CENTER" layoutX="379.0" layoutY="158.0" mnemonicParsing="false" onAction="#returnButtonOnAction" prefHeight="24.0" prefWidth="134.0" style="-fx-background-color: #E86151;" text="Return " textFill="#f2f2f2">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="chooseSourceFilesButton" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="90.0" mnemonicParsing="false" onAction="#chooseSourceFilesButtonOnAction" prefHeight="24.0" prefWidth="167.0" style="-fx-background-color: #E86151;" text="Choose source files" textFill="#f2f2f2">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="13.0" />
+         </font>
+      </Button>
+      <RadioButton fx:id="notSiftRadioButton" layoutX="28.0" layoutY="121.0" mnemonicParsing="false" onAction="#chooseSiftButtonsOnAction" text="Do Not Sift">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="identifierSiftRadioButton" layoutX="118.0" layoutY="121.0" mnemonicParsing="false" onAction="#chooseSiftButtonsOnAction" text="Sift By Identifier ">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="suffixSiftRadioButton" layoutX="238.0" layoutY="121.0" mnemonicParsing="false" onAction="#chooseSiftButtonsOnAction" text="Sift By Suffix">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <TextField fx:id="suffixTextField" layoutX="14.0" layoutY="146.0" onAction="#chooseSuffixTextFieldOnAction" prefHeight="25.0" prefWidth="336.0" promptText="Type in only one suffix like &quot;pdf&quot; etc. No quotation mark.">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </TextField>
+      <CheckBox fx:id="graphicCheckBox" layoutX="55.0" layoutY="183.0" mnemonicParsing="false" onAction="#chooseCheckBoxsOnAction" text="Select Graphic Files">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="textualCheckBox" layoutX="186.0" layoutY="183.0" mnemonicParsing="false" onAction="#chooseCheckBoxsOnAction" text="Select Textual Files">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="musicalCheckBox" layoutX="55.0" layoutY="208.0" mnemonicParsing="false" onAction="#chooseCheckBoxsOnAction" text="Select Musical Files">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="videoCheckBox" layoutX="186.0" layoutY="208.0" mnemonicParsing="false" onAction="#chooseCheckBoxsOnAction" text="Select Video Files">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="otherCheckBox" layoutX="55.0" layoutY="233.0" mnemonicParsing="false" onAction="#chooseCheckBoxsOnAction" text="Select Other Files">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </CheckBox>
+      <RadioButton fx:id="compressionRadioButton" layoutX="186.0" layoutY="258.0" mnemonicParsing="false" onAction="#chooseCompressionRadioButtonOnAction" text="Select Compression">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="encryptionRadioButton" layoutX="55.0" layoutY="258.0" mnemonicParsing="false" onAction="#chooseEncryptionRadioButtonOnAction" text="Select Encryption">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <ImageView fx:id="CloudDataUploadImageView" fitHeight="145.0" fitWidth="193.0" layoutX="14.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/CloudDataSpecificManipulation.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="chooseSourceDirectoryButton" alignment="CENTER" contentDisplay="CENTER" layoutX="193.0" layoutY="90.0" mnemonicParsing="false" onAction="#chooseSourceDirectoryButtonOnAction" prefHeight="24.0" prefWidth="157.0" style="-fx-background-color: #E86151;" text="Choose source directory" textFill="#f2f2f2">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="13.0" />
+         </font>
+      </Button>
+      <Label fx:id="manipulationResultLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="355.0" layoutY="196.0" prefHeight="25.0" prefWidth="167.0" text="The process: 1.sift 2.metadata " textFill="RED">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="selectKeepStructureRadioButton" layoutX="55.0" layoutY="279.0" mnemonicParsing="false" onAction="#chooseSelectKeepStructureRadioButtonOnAction" text="Keep Structure">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="selectKeepMetaDataRadioButton" layoutX="186.0" layoutY="279.0" mnemonicParsing="false" onAction="#chooseSelectKeepMetaDataRadioButtonOnAction" text="Keep MetaData">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <Label fx:id="manipulationResultLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="295.0" prefHeight="25.0" prefWidth="509.0" textFill="RED">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="showS3Button" alignment="CENTER" contentDisplay="CENTER" layoutX="308.0" layoutY="266.0" mnemonicParsing="false" onAction="#showS3ButtonOnAction" prefHeight="15.0" prefWidth="205.0" style="-fx-background-color: #E86151;" text="Click to show all files in the cloud" textFill="#f2f2f2">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="13.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="s3ContentsTextArea" layoutX="211.0" layoutY="320.0" prefHeight="145.0" prefWidth="310.0" promptText="It will show all the contents in the cloud ...">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="13.0" />
+         </font>
+      </TextArea>
+      <Label fx:id="manipulationResultLabel11" alignment="CENTER" contentDisplay="CENTER" layoutX="351.0" layoutY="221.0" prefHeight="25.0" prefWidth="175.0" text="3.encryption 4.compression" textFill="RED">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="uploadButton" alignment="CENTER" contentDisplay="CENTER" layoutX="379.0" layoutY="125.0" mnemonicParsing="false" onAction="#chooseUploadButtonOnAction" prefHeight="24.0" prefWidth="134.0" style="-fx-background-color: #E86151;" text="Upload" textFill="#f2f2f2">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

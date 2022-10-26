@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="475.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qihan.finalFrontEnd.CloudDataManipulationPageController">
+   <children>
+      <AnchorPane prefHeight="82.0" prefWidth="531.0" style="-fx-background-color: #E96151;">
+         <children>
+            <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="41.0" prefHeight="25.0" prefWidth="336.0" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="downloadButton" alignment="CENTER" contentDisplay="CENTER" layoutX="181.0" layoutY="322.0" mnemonicParsing="false" onAction="#chooseDownloadButtonOnAction" prefHeight="23.0" prefWidth="336.0" style="-fx-background-color: #E86151;" text="Download" textFill="#f2f2f2">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="uploadButton" alignment="CENTER" contentDisplay="CENTER" layoutX="181.0" layoutY="282.0" mnemonicParsing="false" onAction="#chooseUploadButtonOnAction" prefHeight="23.0" prefWidth="336.0" style="-fx-background-color: #E86151;" text="Upload" textFill="#f2f2f2">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="returnButton" alignment="CENTER" contentDisplay="CENTER" layoutX="181.0" layoutY="402.0" mnemonicParsing="false" onAction="#returnButtonOnAction" prefHeight="23.0" prefWidth="336.0" style="-fx-background-color: #E86151;" text="Return " textFill="#f2f2f2">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="13.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="CloudDataManipulationDogImageView" fitHeight="157.0" fitWidth="165.0" layoutX="5.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/CloudDataManipulationPage.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="transferButton" alignment="CENTER" contentDisplay="CENTER" layoutX="181.0" layoutY="362.0" mnemonicParsing="false" onAction="#chooseTransferButtonOnAction" prefHeight="23.0" prefWidth="336.0" style="-fx-background-color: #E86151;" text="Transfer" textFill="#f2f2f2">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="13.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="CloudDataManipulationS3ImageView" fitHeight="186.0" fitWidth="531.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/CloudDataManipulationPageS3.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="timeNowLabel" layoutX="84.0" layoutY="15.0" onMouseEntered="#timeNowButtonOnAction" onMouseExited="#timeNowButtonNoAction" text="Pending your mouse here and you can see the time now." textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
