@@ -270,7 +270,7 @@ public class MainPageController implements Initializable {
         try {
             USER_ID = null;
             USER_NAME = null;
-            Parent root = FXMLLoader.load(getClass().getResource("DeleteUserAndCloudDataPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("UserManagementPage.fxml"));
             Stage registerStage = new Stage();
             registerStage.initStyle(StageStyle.UNDECORATED);
             Scene newScene = new Scene(root, 520, 475);

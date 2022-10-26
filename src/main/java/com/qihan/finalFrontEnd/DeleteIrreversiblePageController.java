@@ -139,7 +139,7 @@ public class DeleteIrreversiblePageController implements Initializable {
         stage.close();
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("DeleteUserAndCloudDataPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("UserManagementPage.fxml"));
             STAGE_NOW = new Stage();
 
             //Stage registerStage = new Stage();
@@ -190,7 +190,7 @@ public class DeleteIrreversiblePageController implements Initializable {
         stage.close();
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("DeleteUserAndCloudDataPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("UserManagementPage.fxml"));
             Stage registerStage = new Stage();
             registerStage.initStyle(StageStyle.UNDECORATED);
             Scene newScene = new Scene(root, 520, 475);
