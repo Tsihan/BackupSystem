@@ -40,7 +40,7 @@ public class MainPageController implements Initializable {
     @FXML
     private Button registerButton;
     @FXML
-    private Button deleteUserAndCloudDataButton;
+    private Button userManagementButton;
     @FXML
     private Button guestModeButton;
 
@@ -89,8 +89,8 @@ public class MainPageController implements Initializable {
         directToGuestPage();
     }
 
-    public void deleteUserAndCloudDataButtonOnAction(ActionEvent event) {
-        directToDeleteUserAndCloudDataPage();
+    public void userManagementButtonOnAction(ActionEvent event) {
+        directToUserManagementPage();
     }
 
     public void loginButtonOnAction(ActionEvent event) {
@@ -263,8 +263,8 @@ public class MainPageController implements Initializable {
         }
     }
 
-    public void directToDeleteUserAndCloudDataPage() {
-        Stage stage = (Stage) deleteUserAndCloudDataButton.getScene().getWindow();
+    public void directToUserManagementPage() {
+        Stage stage = (Stage) userManagementButton.getScene().getWindow();
         stage.close();
 
         try {

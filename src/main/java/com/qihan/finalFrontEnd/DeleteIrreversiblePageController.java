@@ -1,6 +1,5 @@
 package com.qihan.finalFrontEnd;
 
-import com.amazonaws.services.s3.model.Bucket;
 import com.qihan.finalCloudDataSystem.DeleteBucket;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -134,7 +133,7 @@ public class DeleteIrreversiblePageController implements Initializable {
 
     }
 
-    private void directToDeleteUserAndCloudDataPage() {
+    private void directToUserManagementPage() {
         Stage stage = (Stage) deleteUserAndCloudDataButton.getScene().getWindow();
         stage.close();
 

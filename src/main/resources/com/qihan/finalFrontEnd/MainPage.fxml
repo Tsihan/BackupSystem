@@ -85,7 +85,7 @@
                         <Font name="Times New Roman Bold" size="13.0" />
                     </font>
                 </Button>
-                <Button fx:id="deleteUserAndCloudDataButton" layoutX="48.0" layoutY="358.0" mnemonicParsing="false" onAction="#deleteUserAndCloudDataButtonOnAction" prefHeight="24.0" prefWidth="270.0" style="-fx-background-color: #f7cbc7;" text="DeleteUserAndCloudData" textFill="#f5320b">
+                <Button fx:id="userManagementButton" layoutX="48.0" layoutY="358.0" mnemonicParsing="false" onAction="#userManagementButtonOnAction" prefHeight="24.0" prefWidth="270.0" style="-fx-background-color: #f7cbc7;" text="UserManagement" textFill="#f5320b">
                     <font>
                         <Font name="Times New Roman Bold" size="13.0" />
                     </font>
