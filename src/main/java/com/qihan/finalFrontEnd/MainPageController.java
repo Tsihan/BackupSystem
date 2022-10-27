@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -120,7 +121,7 @@ public class MainPageController implements Initializable {
 
     public void timeNowButtonOnAction(MouseEvent event) {
         DateFormat currentTime = new SimpleDateFormat("yyyy.MM.dd hh:mm");    //设置时间格式
-
+        timeNowLabel.setAlignment(Pos.CENTER);
         timeNowLabel.setText(currentTime.format(new Date()));
     }
 
