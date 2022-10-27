@@ -146,6 +146,7 @@ public class CloudDataUploadPageController implements Initializable {
     private TextField secretKeyTextField;
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         File brandingFile = new File("src\\main\\resources\\com\\qihan\\finalFrontEnd\\Images\\CloudDataSpecificManipulation.jpg");
@@ -197,10 +198,10 @@ public class CloudDataUploadPageController implements Initializable {
             return;
         }
 
-        if (selectEncryption) {
-            try {
-                Integer.parseInt(secretKeyTextField.getText().trim());
-            } catch (NumberFormatException e) {
+        if(selectEncryption){
+            try{
+                 Integer.parseInt(secretKeyTextField.getText().trim());
+            }catch (NumberFormatException e){
                 manipulationResultLabel.setFont(Font.font("Times New Roman"));
                 manipulationResultLabel.setText("The secret key has to be integer!");
                 return;
@@ -249,7 +250,7 @@ public class CloudDataUploadPageController implements Initializable {
         step4.setSelectEncryption(selectEncryption);
         //将用户给的密钥作为原先写死在代码中的密钥
 
-        if (selectEncryption) {
+        if(selectEncryption){
             step4.setSecret(Integer.parseInt(secretKeyTextField.getText().trim()));
         }
 
@@ -264,7 +265,11 @@ public class CloudDataUploadPageController implements Initializable {
             String zipFilePath = DesDirectory + "\\" + "compression.zip";
             step5.compressData(zipFilePath);
             //已经结束
-
+            //记得删除临时的未压缩的加密文件   对于云端数据是需要的
+            for (String file : step4.tempEncryptedFiles) {
+                File temp = new File(file);
+                temp.delete();
+            }
             manipulationResultLabel.setFont(Font.font("Times New Roman"));
             manipulationResultLabel.setText("The manipulation is successful!");
             //清零
