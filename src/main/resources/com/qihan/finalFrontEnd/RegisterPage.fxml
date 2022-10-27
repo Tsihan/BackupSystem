@@ -35,7 +35,7 @@
                 <Font name="Times New Roman Bold" size="13.0" />
             </font>
         </Label>
-        <TextField fx:id="usernameTextField" layoutX="92.0" layoutY="134.0" prefHeight="25.0" prefWidth="336.0" promptText="UserName">
+        <TextField fx:id="usernameTextField" layoutX="92.0" layoutY="134.0" prefHeight="25.0" prefWidth="336.0" promptText="6 to 32 digit string containing only numbers and letters">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
          </font></TextField>
@@ -58,7 +58,7 @@
                 <Font name="Times New Roman Bold" size="13.0" />
             </font>
         </Label>
-        <PasswordField fx:id="passwordTextField" layoutX="92.0" layoutY="274.0" prefHeight="23.0" prefWidth="336.0" promptText="Password">
+        <PasswordField fx:id="passwordTextField" layoutX="92.0" layoutY="274.0" prefHeight="23.0" prefWidth="336.0" promptText="at least 10 digits containing number, letter and speciality">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
          </font></PasswordField>

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="475.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qihan.finalFrontEnd.RegisterPageController">
+<AnchorPane prefHeight="475.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qihan.finalFrontEnd.RegisterPageController">
     <children>
         <AnchorPane prefHeight="82.0" prefWidth="520.0" style="-fx-background-color: #E96151;">
             <children>
@@ -23,9 +23,9 @@
                         <Font name="Times New Roman" size="18.0" />
                     </font>
                 </Label>
-            <Label fx:id="timeNowLabel" layoutX="105.0" layoutY="20.0" onMouseEntered="#timeNowButtonOnAction" onMouseExited="#timeNowButtonNoAction" text="Pending your mouse here and you can see the time now." textFill="WHITE">
+            <Label fx:id="timeNowLabel" contentDisplay="CENTER" layoutX="108.0" layoutY="20.0" onMouseEntered="#timeNowButtonOnAction" onMouseExited="#timeNowButtonNoAction" prefHeight="14.0" prefWidth="278.0" text="Pending your mouse here and you can see the time now." textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold" size="13.0" />
+                  <Font name="Times New Roman" size="12.0" />
                </font>
             </Label>
             </children>
@@ -35,7 +35,7 @@
                 <Font name="Times New Roman Bold" size="13.0" />
             </font>
         </Label>
-        <TextField fx:id="usernameTextField" layoutX="92.0" layoutY="134.0" prefHeight="25.0" prefWidth="336.0" promptText="UserName">
+        <TextField fx:id="usernameTextField" layoutX="92.0" layoutY="134.0" prefHeight="25.0" prefWidth="336.0" promptText="6 to 32 digit string containing only numbers and letters">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
          </font></TextField>
@@ -58,7 +58,7 @@
                 <Font name="Times New Roman Bold" size="13.0" />
             </font>
         </Label>
-        <PasswordField fx:id="passwordTextField" layoutX="92.0" layoutY="274.0" prefHeight="23.0" prefWidth="336.0" promptText="Password">
+        <PasswordField fx:id="passwordTextField" layoutX="92.0" layoutY="274.0" prefHeight="23.0" prefWidth="336.0" promptText="at least 10 digits containing number, letter and speciality">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
          </font></PasswordField>

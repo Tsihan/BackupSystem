@@ -83,7 +83,7 @@ public class RegisterPageController implements Initializable {
             registrationMessageLabel.setText("You haven't enter a username!");
             return;
         }
-        //包含数字字母的6-32位字符串
+        //只包含数字和字母的6-32位字符串
         if (!Pattern.matches("^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,32}$", usernameTextField.getText().trim())) {
             registrationMessageLabel.setText("You haven't enter a valid username form!");
             return;
@@ -106,7 +106,7 @@ public class RegisterPageController implements Initializable {
             return;
         }
 
-        //至少10个字符，至少1个字母，1个数字和1个特殊字符
+        //至少10个字符，至少1个字母，1个数字和1个特殊字符的字符串
         if (!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{10,}$", passwordTextField.getText().trim())) {
             registrationMessageLabel.setText("You haven't enter a valid password form!");
             return;

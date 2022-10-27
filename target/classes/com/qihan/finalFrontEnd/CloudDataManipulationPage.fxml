@@ -48,9 +48,9 @@
             <Image url="@Images/CloudDataManipulationPageS3.png" />
          </image>
       </ImageView>
-      <Label fx:id="timeNowLabel" layoutX="84.0" layoutY="15.0" onMouseEntered="#timeNowButtonOnAction" onMouseExited="#timeNowButtonNoAction" text="Pending your mouse here and you can see the time now." textFill="WHITE">
+      <Label fx:id="timeNowLabel" contentDisplay="CENTER" layoutX="129.0" layoutY="24.0" onMouseEntered="#timeNowButtonOnAction" onMouseExited="#timeNowButtonNoAction" prefHeight="14.0" prefWidth="278.0" text="Pending your mouse here and you can see the time now." textFill="WHITE">
          <font>
-            <Font name="Times New Roman Bold" size="13.0" />
+            <Font name="Times New Roman" size="12.0" />
          </font>
       </Label>
    </children>
