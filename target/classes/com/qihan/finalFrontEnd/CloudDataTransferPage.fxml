@@ -55,7 +55,7 @@
             <Font name="Times New Roman Bold Italic" size="13.0" />
          </font>
       </TextArea>
-      <Label fx:id="manipulationResultLabel11" alignment="CENTER" contentDisplay="CENTER" layoutX="351.0" layoutY="221.0" prefHeight="25.0" prefWidth="175.0" text="2.choose destination 3.upload" textFill="RED">
+      <Label fx:id="manipulationResultLabel11" alignment="CENTER" contentDisplay="CENTER" layoutX="351.0" layoutY="221.0" prefHeight="25.0" prefWidth="175.0" text="2.choose destination 3.transfer" textFill="RED">
          <font>
             <Font name="Times New Roman Bold Italic" size="13.0" />
          </font>
