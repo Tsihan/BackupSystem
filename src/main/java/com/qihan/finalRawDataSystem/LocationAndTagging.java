@@ -1,7 +1,6 @@
 package com.qihan.finalRawDataSystem;
 
 import cn.hutool.core.io.FileTypeUtil;
-import cn.hutool.core.io.FileUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,11 +16,12 @@ public class LocationAndTagging {
     public ArrayList<String> otherFiles = new ArrayList<String>();
     public ArrayList<String> Files = new ArrayList<String>();
 
-    public void  deleteDir(String path) {
+    public void deleteDir(String path) {
         File file = new File(path);
 
 
         String[] content = file.list();//取得当前目录下所有文件和文件夹
+        assert content != null;
         for (String name : content) {
             File temp = new File(path, name);
             if (temp.isDirectory()) {//判断是否是目录
@@ -55,17 +55,35 @@ public class LocationAndTagging {
 
             String fileSize;
             String Type = FileTypeUtil.getType(newFile);
-            if (Type.equals("jpg") || Type.equals("png") || Type.equals("gif") || Type.equals("tif") || Type.equals("bmp")
-                    || Type.equals("dwg") || Type.equals("psd")) {
-                this.graphFiles.add(newFile.toString());
-            } else if (Type.equals("txt") || Type.equals("rtf") || Type.equals("ini") || Type.equals("log")) {
-                this.textFiles.add(newFile.toString());
-            } else if (Type.equals("mp3") || Type.equals("wma") || Type.equals("wav")) {
-                this.soundFiles.add(newFile.toString());
-            } else if (Type.equals("mp4") || Type.equals("rmvb") || Type.equals("avi")) {
-                this.videoFiles.add(newFile.toString());
-            } else {
-                this.otherFiles.add(newFile.toString());
+            switch (Type) {
+                case "jpg":
+                case "png":
+                case "gif":
+                case "tif":
+                case "bmp":
+                case "dwg":
+                case "psd":
+                    this.graphFiles.add(newFile.toString());
+                    break;
+                case "txt":
+                case "rtf":
+                case "ini":
+                case "log":
+                    this.textFiles.add(newFile.toString());
+                    break;
+                case "mp3":
+                case "wma":
+                case "wav":
+                    this.soundFiles.add(newFile.toString());
+                    break;
+                case "mp4":
+                case "rmvb":
+                case "avi":
+                    this.videoFiles.add(newFile.toString());
+                    break;
+                default:
+                    this.otherFiles.add(newFile.toString());
+                    break;
             }
 
 
@@ -89,10 +107,9 @@ public class LocationAndTagging {
 
         } else {
             //是目录
+            File[] tempList = newFile.listFiles();
 
-            File[] tempList =  newFile.listFiles();
-
-
+            assert tempList != null;
             for (File value : tempList) {
                 if (value.isFile()) {
                     String fileSize;
@@ -109,7 +126,6 @@ public class LocationAndTagging {
                     } else {
                         this.otherFiles.add(value.toString());
                     }
-
 
                     if (value.length() < 1024) {
                         fileSize = value.length() + "B";

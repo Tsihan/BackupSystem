@@ -179,27 +179,6 @@ public class GuestPageController implements Initializable {
     @FXML
     private TextField previousKeyTextField;
 
-
-    /**
-     * 深拷贝
-     *
-     * @param
-     * @param
-     * @return
-     * @throws IOException
-     * @throws ClassNotFoundException
-     */
-//    public static <T> ArrayList<T> deepCopy(ArrayList<T> src) throws IOException, ClassNotFoundException {
-//        ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-//        ObjectOutputStream out = new ObjectOutputStream(byteOut);
-//        out.writeObject(src);
-//
-//        ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
-//        ObjectInputStream in = new ObjectInputStream(byteIn);
-//        @SuppressWarnings("unchecked")
-//        List<T> dest = (List<T>) in.readObject();
-//        return (ArrayList<T>) dest;
-//    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         File registerFile = new File("src\\main\\resources\\com\\qihan\\finalFrontEnd\\Images\\GuestPage.jpg");

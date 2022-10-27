@@ -1,6 +1,6 @@
 package com.qihan.finalFrontEnd;
 
-import javafx.event.ActionEvent;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,11 +67,9 @@ public class MainPageController implements Initializable {
     private PasswordField enterPasswordField;
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       //
-
+        //
         File brandingFile = new File("src\\main\\resources\\com\\qihan\\finalFrontEnd\\Images\\LoginLeft.jpg");
         Image brandingImage = new Image(brandingFile.toURI().toString());
         brandingImageView.setImage(brandingImage);
@@ -82,19 +80,19 @@ public class MainPageController implements Initializable {
 
     }
 
-    public void registerButtonOnAction(ActionEvent event) {
+    public void registerButtonOnAction() {
         directToRegisterPage();
     }
 
-    public void guestModeButtonOnAction(ActionEvent event) {
+    public void guestModeButtonOnAction() {
         directToGuestPage();
     }
 
-    public void userManagementButtonOnAction(ActionEvent event) {
+    public void userManagementButtonOnAction() {
         directToUserManagementPage();
     }
 
-    public void loginButtonOnAction(ActionEvent event) {
+    public void loginButtonOnAction() {
 
         if (!usernameTextField.getText().isBlank() && !enterPasswordField.getText().isBlank()) {
             String user_name = usernameTextField.getText();
@@ -108,24 +106,24 @@ public class MainPageController implements Initializable {
         }
     }
 
-    public void exitButtonOnAction(ActionEvent event) {
+    public void exitButtonOnAction() {
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
         System.exit(0);
     }
 
-    public void helpButtonOnAction(MouseEvent event) {
+    public void helpButtonOnAction() {
         helpLabel.setFont(Font.font("Times New Roman"));
         helpLabel.setText("you can do whatever you like since it's a toy");
     }
 
-    public void timeNowButtonOnAction(MouseEvent event) {
+    public void timeNowButtonOnAction() {
         DateFormat currentTime = new SimpleDateFormat("yyyy.MM.dd hh:mm");    //设置时间格式
         timeNowLabel.setAlignment(Pos.CENTER);
         timeNowLabel.setText(currentTime.format(new Date()));
     }
 
-    public void timeNowButtonNoAction(MouseEvent event) {
+    public void timeNowButtonNoAction() {
 
         timeNowLabel.setFont(Font.font("Times New Roman"));
         timeNowLabel.setText("Pending your mouse here and you can see the time now.");
@@ -133,7 +131,7 @@ public class MainPageController implements Initializable {
 
     public static String buildMD5(String plainText) {
 
-        byte[] secretBytes = null;
+        byte[] secretBytes;
         try {
             secretBytes = MessageDigest.getInstance("md5").digest(
                     plainText.getBytes());
@@ -180,11 +178,11 @@ public class MainPageController implements Initializable {
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("CommonUserPage.fxml"));
-            STAGE_NOW= new Stage();
+            STAGE_NOW = new Stage();
 
             //Stage registerStage = new Stage();
             STAGE_NOW.initStyle(StageStyle.UNDECORATED);
-           // registerStage.initStyle(StageStyle.UNDECORATED);
+            // registerStage.initStyle(StageStyle.UNDECORATED);
             Scene newScene = new Scene(root, 520, 475);
             STAGE_NOW.setScene(newScene);
             STAGE_NOW.show();
@@ -314,15 +312,15 @@ public class MainPageController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("GuestPage.fxml"));
             USER_ID = null;
             USER_NAME = null;
-            STAGE_NOW= new Stage();
+            STAGE_NOW = new Stage();
             STAGE_NOW.initStyle(StageStyle.UNDECORATED);
-           // Stage registerStage = new Stage();
-           // registerStage.initStyle(StageStyle.UNDECORATED);
+            // Stage registerStage = new Stage();
+            // registerStage.initStyle(StageStyle.UNDECORATED);
             Scene newScene = new Scene(root, 520, 475);
             STAGE_NOW.setScene(newScene);
             STAGE_NOW.show();
-           // registerStage.setScene(newScene);
-           // registerStage.show();
+            // registerStage.setScene(newScene);
+            // registerStage.show();
 
             //        鼠标按下事件
             newScene.setOnMousePressed(new EventHandler<MouseEvent>() {
