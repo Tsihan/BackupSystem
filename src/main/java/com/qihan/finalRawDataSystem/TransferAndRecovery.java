@@ -22,7 +22,7 @@ public class TransferAndRecovery {
     /**
      * 用于文件内容加密的密钥  由于是用户指定需要修改为输入
      */
-    public int secret ;
+    public int secret;
     //用户输入五：是否选择文件加密
     public boolean SelectEncryption = true;
     //用户输入六：是否选择对指定文件解密
@@ -97,7 +97,7 @@ public class TransferAndRecovery {
 
 
     public void addMetaData(String DesDirectory) {
-        if(selectSaveMeta){
+        if (selectSaveMeta) {
             for (int i = 0; i < filesAfterSift.size(); i++) {
                 try {
 
@@ -135,7 +135,7 @@ public class TransferAndRecovery {
 
                 }
             }
-        }else {
+        } else {
             return;
         }
 
@@ -174,7 +174,7 @@ public class TransferAndRecovery {
                     fs.close();
 
                     inStream.close();
-                    System.out.println("copy file: " + fs +" successfully!");
+                    System.out.println("copy file: " + fs + " successfully!");
                 }
             } catch (Exception e) {
                 System.out.println("When copy the single file: " + filesAfterSift.get(i) + ", an error occurs!");
@@ -314,17 +314,18 @@ public class TransferAndRecovery {
     public void encryption(String DesDirectory) throws IOException {
         if (!SelectEncryption) {
             //不选择加密则直接跳出
+            tempEncryptedFiles = filesAfterSift;
             return;
         }
 
-        for (String singleFile : filesAfterSift){
+        for (String singleFile : filesAfterSift) {
             File temp = new File(singleFile);
-            tempEncryptedFiles.add(DesDirectory +"\\" +temp.getName());
+            tempEncryptedFiles.add(DesDirectory + "\\" + temp.getName());
 
-           // System.out.println(DesDirectory +"\\"+temp.getName());
+            // System.out.println(DesDirectory +"\\"+temp.getName());
 
             InputStream in = new BufferedInputStream(new FileInputStream(singleFile));
-            OutputStream out = new BufferedOutputStream(new FileOutputStream(DesDirectory+"\\"+temp.getName()));
+            OutputStream out = new BufferedOutputStream(new FileOutputStream(DesDirectory + "\\" + temp.getName()));
             int data = -1;
             while ((data = in.read()) > -1) {
                 out.write(data + secret);

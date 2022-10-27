@@ -48,7 +48,8 @@ public class CloudDataUploadPageController implements Initializable {
     //压缩文件的路径，包含文件名
     public String SrcZipFilePath = null;
     //临时存储本地操作处理后的文件以及路径
-    public static String DesDirectory = "E:\\FinalDataBackupSystem\\src\\main\\resources\\com\\qihan\\tempDirectory";
+
+    public static String DesDirectory = "src\\main\\resources\\com\\qihan\\tempDirectory\\";
 
 
     public static String USER_NAME;
@@ -145,7 +146,6 @@ public class CloudDataUploadPageController implements Initializable {
     private TextField secretKeyTextField;
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         File brandingFile = new File("src\\main\\resources\\com\\qihan\\finalFrontEnd\\Images\\CloudDataSpecificManipulation.jpg");
@@ -196,11 +196,11 @@ public class CloudDataUploadPageController implements Initializable {
             manipulationResultLabel.setText("Haven't designated sift mode!");
             return;
         }
-        int secret = 0;
-        if(selectEncryption){
-            try{
-                secret = Integer.parseInt(secretKeyTextField.getText().trim());
-            }catch (NumberFormatException e){
+
+        if (selectEncryption) {
+            try {
+                Integer.parseInt(secretKeyTextField.getText().trim());
+            } catch (NumberFormatException e) {
                 manipulationResultLabel.setFont(Font.font("Times New Roman"));
                 manipulationResultLabel.setText("The secret key has to be integer!");
                 return;
@@ -249,7 +249,7 @@ public class CloudDataUploadPageController implements Initializable {
         step4.setSelectEncryption(selectEncryption);
         //将用户给的密钥作为原先写死在代码中的密钥
 
-        if(selectEncryption){
+        if (selectEncryption) {
             step4.setSecret(Integer.parseInt(secretKeyTextField.getText().trim()));
         }
 
@@ -261,14 +261,10 @@ public class CloudDataUploadPageController implements Initializable {
         step5.setSelectCompression(selectCompression);
         step5.setFilesAfterSift(step4.tempEncryptedFiles);
         if (selectCompression) {
-            String zipFilePath = DesDirectory + "\\" + "test.zip";
+            String zipFilePath = DesDirectory + "\\" + "compression.zip";
             step5.compressData(zipFilePath);
             //已经结束
-            //记得删除临时的未压缩的加密文件
-            for (String file : step4.tempEncryptedFiles) {
-                File temp = new File(file);
-                temp.delete();
-            }
+
             manipulationResultLabel.setFont(Font.font("Times New Roman"));
             manipulationResultLabel.setText("The manipulation is successful!");
             //清零
@@ -293,12 +289,8 @@ public class CloudDataUploadPageController implements Initializable {
         if (selectEncryption) {
             TransferAndRecovery step6 = new TransferAndRecovery();
             step6.setFilesAfterSift(step5.filesAfterSift);
-            step6.Copy(DesDirectory);
-            //记得删除临时的未压缩的加密文件
-            for (String file : step4.tempEncryptedFiles) {
-                File temp = new File(file);
-                temp.delete();
-            }
+            step6.Transfer(DesDirectory);
+
             manipulationResultLabel.setFont(Font.font("Times New Roman"));
             manipulationResultLabel.setText("The manipulation is successful!");
             //清零

@@ -80,6 +80,7 @@ public class Compression {
                 while ((len = fis.read(buf)) > 0) {
                     zos.write(buf, 0, len);
                 }
+                zos.flush();
                 zos.closeEntry();
                 fis.close();
 

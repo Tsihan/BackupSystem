@@ -310,14 +310,10 @@ public class GuestPageController implements Initializable {
         step5.setSelectCompression(selectCompression);
         step5.setFilesAfterSift(step4.tempEncryptedFiles);
         if (selectCompression) {
-            String zipFilePath = DesDirectory + "\\" + "test.zip";
+            String zipFilePath = DesDirectory + "\\" + "compression.zip";
             step5.compressData(zipFilePath);
             //已经结束
-            //记得删除临时的未压缩的加密文件
-            for (String file : step4.tempEncryptedFiles) {
-                File temp = new File(file);
-                temp.delete();
-            }
+
             manipulationResultLabel.setFont(Font.font("Times New Roman"));
             manipulationResultLabel.setText("The manipulation is successful!");
             //清零

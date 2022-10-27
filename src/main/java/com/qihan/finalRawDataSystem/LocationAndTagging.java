@@ -89,49 +89,49 @@ public class LocationAndTagging {
 
         } else {
             //是目录
-            File file = FileUtil.file(path);
-            File[] tempList = file.listFiles();
+
+            File[] tempList =  newFile.listFiles();
 
 
-            for (int i = 0; i < tempList.length; i++) {
-                if (tempList[i].isFile()) {
+            for (File value : tempList) {
+                if (value.isFile()) {
                     String fileSize;
-                    String Type = FileTypeUtil.getType(tempList[i]);
+                    String Type = FileTypeUtil.getType(value);
                     if (Type.equals("jpg") || Type.equals("png") || Type.equals("gif") || Type.equals("tif") || Type.equals("bmp")
                             || Type.equals("dwg") || Type.equals("psd")) {
-                        this.graphFiles.add(tempList[i].toString());
+                        this.graphFiles.add(value.toString());
                     } else if (Type.equals("txt") || Type.equals("rtf") || Type.equals("ini") || Type.equals("log")) {
-                        this.textFiles.add(tempList[i].toString());
+                        this.textFiles.add(value.toString());
                     } else if (Type.equals("mp3") || Type.equals("wma") || Type.equals("wav")) {
-                        this.soundFiles.add(tempList[i].toString());
+                        this.soundFiles.add(value.toString());
                     } else if (Type.equals("mp4") || Type.equals("rmvb") || Type.equals("avi")) {
-                        this.videoFiles.add(tempList[i].toString());
+                        this.videoFiles.add(value.toString());
                     } else {
-                        this.otherFiles.add(tempList[i].toString());
+                        this.otherFiles.add(value.toString());
                     }
 
 
-                    if (tempList[i].length() < 1024) {
-                        fileSize = tempList[i].length() + "B";
-                    } else if (tempList[i].length() < 1024 * 1024) {
-                        fileSize = tempList[i].length() / 1024 + "KB";
-                    } else if (tempList[i].length() < 1024 * 1024 * 1024) {
-                        fileSize = tempList[i].length() / 1024 / 1024 + "MB";
-                    } else if (tempList[i].length() / 1024 / 1024 / 1024 < 4) {
-                        fileSize = tempList[i].length() / 1024 / 1024 / 1024 + "GB";
+                    if (value.length() < 1024) {
+                        fileSize = value.length() + "B";
+                    } else if (value.length() < 1024 * 1024) {
+                        fileSize = value.length() / 1024 + "KB";
+                    } else if (value.length() < 1024 * 1024 * 1024) {
+                        fileSize = value.length() / 1024 / 1024 + "MB";
+                    } else if (value.length() / 1024 / 1024 / 1024 < 4) {
+                        fileSize = value.length() / 1024 / 1024 / 1024 + "GB";
                     } else {
                         throw new InvalidParameterException("The single file exceeds the size bound!");
                     }
-                    wholeSizeBytes += tempList[i].length();
+                    wholeSizeBytes += value.length();
 
-                    Date lastModified = new Date(file.lastModified());
-                    System.out.println("File：" + tempList[i] + " The last modified date：" + lastModified + " The type of the file："
+                    Date lastModified = new Date(newFile.lastModified());
+                    System.out.println("File：" + value + " The last modified date：" + lastModified + " The type of the file："
                             + Type + " The size of the file：" + fileSize);
-                    this.Files.add(tempList[i].toString());
+                    this.Files.add(value.toString());
                 }
-                if (tempList[i].isDirectory()) {
-                    System.out.println("Directory：" + tempList[i]);
-                    this.provideInfo(String.valueOf(tempList[i]));
+                if (value.isDirectory()) {
+                    System.out.println("Directory：" + value);
+                    this.provideInfo(String.valueOf(value));
 
                 }
             }
