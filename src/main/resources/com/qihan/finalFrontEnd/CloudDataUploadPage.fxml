@@ -143,5 +143,10 @@
             <Font name="Times New Roman Bold Italic" size="13.0" />
          </font>
       </Button>
+      <TextField fx:id="secretKeyTextField" layoutX="187.0" layoutY="229.0" prefHeight="25.0" prefWidth="167.0" promptText="Type the secret key if needed ">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

@@ -96,6 +96,7 @@ public class GuestPageController implements Initializable {
     @FXML
     private TextField suffixTextField;
 
+
     //ok
     @FXML
     private Button chooseSourceFilesButton;
@@ -171,6 +172,12 @@ public class GuestPageController implements Initializable {
 
     @FXML
     private Label manipulationResultLabel;
+    //新增用户需要将密钥作为输入
+    @FXML
+    private TextField secretKeyTextField;
+    @FXML
+    private TextField previousKeyTextField;
+
 
     /**
      * 深拷贝
@@ -221,6 +228,8 @@ public class GuestPageController implements Initializable {
 
 
     public void chooseCopyButtonOnAction(ActionEvent event) throws IOException {
+
+        previousKeyTextField.setText("");
         if (rawFilesArrayList.size() == 0) {
             manipulationResultLabel.setFont(Font.font("Times New Roman"));
             manipulationResultLabel.setText("Haven't designated source!");
@@ -237,8 +246,21 @@ public class GuestPageController implements Initializable {
             manipulationResultLabel.setText("Haven't designated sift mode!");
             return;
         }
-        //第一步{
 
+        //将用户给的密钥作为原先写死在代码中的密钥
+
+        if (selectEncryption) {
+            try {
+                Integer.parseInt(secretKeyTextField.getText().trim());
+            } catch (NumberFormatException e) {
+                manipulationResultLabel.setFont(Font.font("Times New Roman"));
+                manipulationResultLabel.setText("The secret key has to be integer!");
+                return;
+            }
+        }
+
+
+        //第一步
         LocationAndTagging step1 = new LocationAndTagging();
         for (String singleFile : rawFilesArrayList) {
             step1.provideInfo(singleFile);
@@ -274,6 +296,12 @@ public class GuestPageController implements Initializable {
         TransferAndRecovery step4 = new TransferAndRecovery();
         step4.setFilesAfterSift(step3.getFilesAfterSift());
         step4.setSelectEncryption(selectEncryption);
+
+        if (selectEncryption) {
+            step4.setSecret(Integer.parseInt(secretKeyTextField.getText().trim()));
+        }
+
+
         step4.encryption(DesDirectory);
         //第五步压缩
         Compression step5 = new Compression();
@@ -308,12 +336,8 @@ public class GuestPageController implements Initializable {
         if (selectEncryption) {
             TransferAndRecovery step6 = new TransferAndRecovery();
             step6.setFilesAfterSift(step5.filesAfterSift);
-            step6.Copy(DesDirectory);
-            //记得删除临时的未压缩的加密文件
-            for (String file : step4.tempEncryptedFiles) {
-                File temp = new File(file);
-                temp.delete();
-            }
+            step6.Transfer(DesDirectory);
+
             manipulationResultLabel.setFont(Font.font("Times New Roman"));
             manipulationResultLabel.setText("The manipulation is successful!");
             //清零
@@ -339,12 +363,14 @@ public class GuestPageController implements Initializable {
         rawVideoFilesArrayList.clear();
         rawOtherFilesArrayList.clear();
         DesDirectory = null;
-        return;
 
-
+        suffixTextField.setText("");
+        secretKeyTextField.setText("");
     }
 
     public void chooseCutButtonOnAction(ActionEvent event) throws IOException {
+
+        previousKeyTextField.setText("");
         if (rawFilesArrayList.size() == 0) {
             manipulationResultLabel.setFont(Font.font("Times New Roman"));
             manipulationResultLabel.setText("Haven't designated source!");
@@ -361,6 +387,19 @@ public class GuestPageController implements Initializable {
             manipulationResultLabel.setText("Haven't designated sift mode!");
             return;
         }
+
+        //将用户给的密钥作为原先写死在代码中的密钥
+        int secret = 0;
+        if (selectEncryption) {
+            try {
+                secret = Integer.parseInt(secretKeyTextField.getText().trim());
+            } catch (NumberFormatException e) {
+                manipulationResultLabel.setFont(Font.font("Times New Roman"));
+                manipulationResultLabel.setText("The secret key has to be integer!");
+                return;
+            }
+        }
+
         //第一步{
 
         LocationAndTagging step1 = new LocationAndTagging();
@@ -398,6 +437,11 @@ public class GuestPageController implements Initializable {
         TransferAndRecovery step4 = new TransferAndRecovery();
         step4.setFilesAfterSift(step3.getFilesAfterSift());
         step4.setSelectEncryption(selectEncryption);
+
+        if (selectEncryption) {
+            step4.setSecret(secret);
+        }
+
         step4.encryption(DesDirectory);
         //第五步压缩
         Compression step5 = new Compression();
@@ -434,21 +478,17 @@ public class GuestPageController implements Initializable {
             return;
         }
 
-        //第六步 拷贝
+        //第六步 剪贴
         if (selectEncryption) {
             TransferAndRecovery step6 = new TransferAndRecovery();
             step6.setFilesAfterSift(step5.filesAfterSift);
-            step6.Copy(DesDirectory);
+            step6.Transfer(DesDirectory);
             //删除原先的文件与目录
             for (String file : step2.filesAfterSift) {
                 File temp = new File(file);
                 temp.delete();
             }
-            //记得删除临时的未压缩的加密文件
-            for (String file : step4.tempEncryptedFiles) {
-                File temp = new File(file);
-                temp.delete();
-            }
+
             manipulationResultLabel.setFont(Font.font("Times New Roman"));
             manipulationResultLabel.setText("The manipulation is successful!");
             //清零
@@ -474,7 +514,9 @@ public class GuestPageController implements Initializable {
         rawVideoFilesArrayList.clear();
         rawOtherFilesArrayList.clear();
         DesDirectory = null;
-        return;
+
+        suffixTextField.setText("");
+        secretKeyTextField.setText("");
 
     }
 
@@ -498,6 +540,9 @@ public class GuestPageController implements Initializable {
     }
 
     public void chooseCompareExecuteButtonOnAction(ActionEvent event) {
+        suffixTextField.setText("");
+        secretKeyTextField.setText("");
+        previousKeyTextField.setText("");
         if (firstCompareFile != null && secondCompareFile != null) {
             TransferAndRecovery test = new TransferAndRecovery();
             if (test.passIdentification(firstCompareFile, secondCompareFile)) {
@@ -516,6 +561,9 @@ public class GuestPageController implements Initializable {
 
 
     public void chooseCompareFirstButtonOnAction(ActionEvent event) {
+        suffixTextField.setText("");
+        secretKeyTextField.setText("");
+        previousKeyTextField.setText("");
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Select the first file", "*.*");
         fileChooser.getExtensionFilters().add(extFilter);
@@ -525,6 +573,9 @@ public class GuestPageController implements Initializable {
     }
 
     public void chooseCompareSecondButtonOnAction(ActionEvent event) {
+        suffixTextField.setText("");
+        secretKeyTextField.setText("");
+        previousKeyTextField.setText("");
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Select the second file", "*.*");
         fileChooser.getExtensionFilters().add(extFilter);
@@ -535,6 +586,7 @@ public class GuestPageController implements Initializable {
 
 
     public void chooseDecryptButtonOnAction(ActionEvent event) throws IOException {
+
 
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("You must select encrypted files, or "
@@ -547,6 +599,13 @@ public class GuestPageController implements Initializable {
             srcFiles.add(singleFile.toString());
         }
         TransferAndRecovery test = new TransferAndRecovery();
+        try {
+            test.setSecret(Integer.parseInt(previousKeyTextField.getText().trim()));
+        } catch (NumberFormatException e) {
+            manipulationResultLabel.setText("The previous key is pure number!");
+            return;
+        }
+
         for (String singleFile : srcFiles) {
             //第一部分获取不带文件后缀的文件名
             String part1 = singleFile.substring(0, singleFile.lastIndexOf("."));
@@ -563,6 +622,7 @@ public class GuestPageController implements Initializable {
             String target = part1 + part2 + part3;
             test.decryption(new File(singleFile), new File(target));
         }
+        previousKeyTextField.setText("");
 
         manipulationResultLabel.setFont(Font.font("Times New Roman"));
         manipulationResultLabel.setText("The chosen files have been decrypted!");
@@ -571,6 +631,8 @@ public class GuestPageController implements Initializable {
 
 
     public void chooseEncryptionRadioButtonOnAction(ActionEvent event) {
+
+
         if (encryptionRadioButton.isSelected()) {
             selectEncryption = true;
         } else {
@@ -580,6 +642,8 @@ public class GuestPageController implements Initializable {
     }
 
     public void chooseCompressionRadioButtonOnAction(ActionEvent event) {
+
+
         if (compressionRadioButton.isSelected()) {
             selectCompression = true;
         } else {
@@ -589,6 +653,8 @@ public class GuestPageController implements Initializable {
     }
 
     public void chooseSuffixTextFieldOnAction(ActionEvent event) {
+
+
         if (!suffixTextField.getText().trim().equals("")) {
             //去掉首尾的空格
             suffix = suffixTextField.getText().trim();
@@ -608,6 +674,7 @@ public class GuestPageController implements Initializable {
      * @param event
      */
     public void chooseSiftButtonsOnAction(ActionEvent event) {
+
 
         if (notSiftRadioButton.isSelected()) {
             executeIdentifierSift = false;

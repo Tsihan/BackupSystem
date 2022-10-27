@@ -139,6 +139,11 @@ public class CloudDataUploadPageController implements Initializable {
     @FXML
     private TextArea s3ContentsTextArea;
 
+    //因为需要用户指定加密密钥 这里增加输入
+    @FXML
+    private TextField secretKeyTextField;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -190,7 +195,18 @@ public class CloudDataUploadPageController implements Initializable {
             manipulationResultLabel.setText("Haven't designated sift mode!");
             return;
         }
-        //第一步{
+        int secret = 0;
+        if(selectEncryption){
+            try{
+                secret = Integer.parseInt(secretKeyTextField.getText().trim());
+            }catch (NumberFormatException e){
+                manipulationResultLabel.setFont(Font.font("Times New Roman"));
+                manipulationResultLabel.setText("The secret key has to be integer!");
+                return;
+            }
+        }
+
+        //第一步
 
         LocationAndTagging step1 = new LocationAndTagging();
         for (String singleFile : rawFilesArrayList) {
@@ -230,6 +246,13 @@ public class CloudDataUploadPageController implements Initializable {
         TransferAndRecovery step4 = new TransferAndRecovery();
         step4.setFilesAfterSift(step3.getFilesAfterSift());
         step4.setSelectEncryption(selectEncryption);
+        //将用户给的密钥作为原先写死在代码中的密钥
+
+        if(selectEncryption){
+            step4.setSecret(Integer.parseInt(secretKeyTextField.getText().trim()));
+        }
+
+
         step4.encryption(DesDirectory);
         //第五步压缩
         Compression step5 = new Compression();
@@ -315,9 +338,6 @@ public class CloudDataUploadPageController implements Initializable {
         PutObjects.putObjects(tempGetAllFiles.Files, s3_name);
         //将暂存到本地的需要上传的文件全部删除
         tempGetAllFiles.deleteDir(DesDirectory);
-        return;
-
-
     }
 
     public void chooseSourceFilesButtonOnAction(ActionEvent event) {

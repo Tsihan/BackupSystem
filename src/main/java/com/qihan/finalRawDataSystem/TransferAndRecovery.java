@@ -9,16 +9,28 @@ import java.security.MessageDigest;
 import java.util.ArrayList;
 
 public class TransferAndRecovery {
+
+
+    public int getSecret() {
+        return secret;
+    }
+
+    public void setSecret(int secret) {
+        this.secret = secret;
+    }
+
     /**
-     * 用于文件内容加密的密钥
+     * 用于文件内容加密的密钥  由于是用户指定需要修改为输入
      */
-    static int secret = 20010408;
+    public int secret ;
     //用户输入五：是否选择文件加密
     public boolean SelectEncryption = true;
     //用户输入六：是否选择对指定文件解密
     public boolean SelectDecryption = true;
     //作为临时的arraylist存储加密后的零时文件的地址
     public ArrayList<String> tempEncryptedFiles = new ArrayList<String>();
+
+
     public boolean isSelectEncryption() {
         return SelectEncryption;
     }
@@ -157,7 +169,12 @@ public class TransferAndRecovery {
 
                         fs.write(buffer, 0, byteread);
                     }
+                    //记得缓冲区以及关闭文件
+                    fs.flush();
+                    fs.close();
+
                     inStream.close();
+                    System.out.println("copy file: " + fs +" successfully!");
                 }
             } catch (Exception e) {
                 System.out.println("When copy the single file: " + filesAfterSift.get(i) + ", an error occurs!");
@@ -312,6 +329,7 @@ public class TransferAndRecovery {
             while ((data = in.read()) > -1) {
                 out.write(data + secret);
             }
+            out.flush();
             out.close();
             in.close();
         }
@@ -339,6 +357,7 @@ public class TransferAndRecovery {
         while ((data = in.read()) > -1) {
             out.write(data - secret);
         }
+        out.flush();
         out.close();
         in.close();
     }
