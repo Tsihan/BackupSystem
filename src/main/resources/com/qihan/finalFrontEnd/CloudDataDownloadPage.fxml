@@ -36,7 +36,7 @@
             <Font name="Times New Roman Bold" size="12.0" />
          </font>
       </RadioButton>
-      <TextField fx:id="DestinationTextField" layoutX="24.0" layoutY="146.0" prefHeight="25.0" prefWidth="336.0" promptText="Type in one file/directory's name. No quotation mark.">
+      <TextField fx:id="fileNameTextField" layoutX="24.0" layoutY="146.0" prefHeight="25.0" prefWidth="336.0" promptText="Type in one file/directory's name. No quotation mark.">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
          </font>

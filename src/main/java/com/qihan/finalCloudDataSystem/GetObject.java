@@ -82,7 +82,7 @@ public class GetObject {
     }
 
 
-    public static void getSingleObject(String bucket_name, String key_name, String Download_Des, Label TextLabel,String user_id,String s3_id) {
+    public static boolean getSingleObject(String bucket_name, String key_name, String Download_Des, Label TextLabel,String user_id,String s3_id) {
         final String USAGE = "\n" +
                 "To run this example, supply the name of an S3 bucket and object to\n" +
                 "download from it.\n" +
@@ -110,16 +110,19 @@ public class GetObject {
             fos.close();
         } catch (AmazonServiceException e) {
             System.err.println(e.getErrorMessage());
-            TextLabel.setText("Connection error!");
-            System.exit(1);
+            TextLabel.setText("Connection error!/The specified key does not exist!");
+            return false;
+            //System.exit(1);
         } catch (FileNotFoundException e) {
             System.err.println(e.getMessage());
-            TextLabel.setText("Content not found!");
-            System.exit(1);
+            TextLabel.setText("Local file not found!");
+            return false;
+           // System.exit(1);
         } catch (IOException e) {
             System.err.println(e.getMessage());
             TextLabel.setText("IO error!");
-            System.exit(1);
+            return false;
+           // System.exit(1);
         }
 
         String DOWNLOAD_TIME = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
@@ -133,6 +136,7 @@ public class GetObject {
 
 
         System.out.println("Done!");
+        return true;
     }
 
     public static void getAllObjects(String bucket_name, String Download_Des,String user_id,String s3_id) {

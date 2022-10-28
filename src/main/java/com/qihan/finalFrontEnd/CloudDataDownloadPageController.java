@@ -110,12 +110,25 @@ public class CloudDataDownloadPageController implements Initializable {
         //下载所有的存储桶中的文件
         if (downloadAllRadioButton.isSelected()) {
             GetObject.getAllObjects(s3_name, DesDirectory, USER_ID, s3_name);
+            fileNameTextField.setText("");
+            DesDirectory = null;
+
             manipulationResultLabel.setText("The manipulation is successful!");
+
         } else {
             //下载存储桶中的一个文件/路径
-            GetObject.getSingleObject(s3_name, fileNameTextField.getText().trim(), DesDirectory, manipulationResultLabel
-                    , USER_ID, s3_name);
-            manipulationResultLabel.setText("The manipulation is successful!");
+            if (GetObject.getSingleObject(s3_name, fileNameTextField.getText().trim(), DesDirectory, manipulationResultLabel
+                    , USER_ID, s3_name)) {
+                fileNameTextField.setText("");
+                DesDirectory = null;
+                manipulationResultLabel.setText("The manipulation is successful!");
+            } else {
+                fileNameTextField.setText("");
+                DesDirectory = null;
+            }
+            ;
+
+
         }
 
     }
