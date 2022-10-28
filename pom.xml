@@ -99,7 +99,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.qihan.finaldatabackupsystem/com.qihan.Main</mainClass>
+                            <mainClass>com.qihan.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -126,7 +126,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.qihan.finaldatabackupsystem/com.qihan.Main
+                               com.qihan.Main
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
