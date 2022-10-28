@@ -92,10 +92,16 @@ public class CloudDataTransferPageController implements Initializable {
         String Des_s3name = "user-" + DestinationTextField.getText().trim() + "-bucket";
         //拷贝存储桶中的文件到另一个存储桶
         manipulationResultLabel.setText("");
-        CopyObject.copy(ContentTextField.getText().trim(), Src_s3name, Des_s3name);
-        manipulationResultLabel.setText("The manipulation is successful!");
-        ContentTextField.setText("");
-        DestinationTextField.setText("");
+        if(CopyObject.copy(ContentTextField.getText().trim(), Src_s3name, Des_s3name,manipulationResultLabel)){
+            manipulationResultLabel.setText("The manipulation is successful!");
+            ContentTextField.setText("");
+            DestinationTextField.setText("");
+        }else {
+            ContentTextField.setText("");
+            DestinationTextField.setText("");
+        }
+
+
 
 
     }
