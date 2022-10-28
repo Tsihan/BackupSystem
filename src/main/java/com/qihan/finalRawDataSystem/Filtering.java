@@ -113,19 +113,17 @@ public class Filtering {
      * @throws IOException
      */
     public void siftfilesByRE(ArrayList<String> Fs, String aimedExtension, boolean execute) throws IOException {
-        if (execute == true) {
-            for (int i = 0; i < Fs.size(); i++) {
+        if (execute) {
+            for (String f : Fs) {
                 String extension = "";
-                int j = Fs.get(i).lastIndexOf('.');
+                int j = f.lastIndexOf('.');
                 if (j > 0) {
-                    extension = Fs.get(i).substring(j + 1);
+                    extension = f.substring(j + 1);
                 }
                 if (aimedExtension.equals(extension)) {
-                    this.filesAfterSift.add(Fs.get(i));
+                    this.filesAfterSift.add(f);
                 }
             }
-        } else {
-            return;
         }
 
 

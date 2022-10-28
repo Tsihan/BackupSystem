@@ -115,7 +115,8 @@ public class TransferAndRecovery {
                             System.out.println("isSymbolicLink: " + attr.isSymbolicLink());
                             System.out.println("size: " + attr.size());
 
-                            FileWriter writeMeta = new FileWriter(DesDirectory + "\\" + oldFile.getName() + ".Meta");
+                            FileWriter writeMeta = new FileWriter(DesDirectory + "\\"
+                                    + oldFile.getName() + ".Meta");
                             writeMeta.write("creationTime: " + attr.creationTime() + "\n");
                             writeMeta.write("lastAccessTime: " + attr.lastAccessTime() + "\n");
                             writeMeta.write("lastModifiedTime: " + attr.lastModifiedTime() + "\n");
@@ -260,13 +261,18 @@ public class TransferAndRecovery {
         }
     }
 
+    /**
+     * 生成文件的MD5值以比较数据完整性
+     * @param file
+     * @return
+     */
     public String getFileMD5(File file) {
         if (!file.isFile()) {
             return null;
         }
         MessageDigest digest = null;
         FileInputStream in = null;
-        byte buffer[] = new byte[8192];
+        byte[] buffer = new byte[8192];
         int len;
         try {
             digest = MessageDigest.getInstance("MD5");
@@ -281,6 +287,7 @@ public class TransferAndRecovery {
             return null;
         } finally {
             try {
+                assert in != null;
                 in.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -317,7 +324,6 @@ public class TransferAndRecovery {
             tempEncryptedFiles = filesAfterSift;
             return;
         }
-
         for (String singleFile : filesAfterSift) {
             File temp = new File(singleFile);
             tempEncryptedFiles.add(DesDirectory + "\\" + temp.getName());
@@ -325,7 +331,8 @@ public class TransferAndRecovery {
             // System.out.println(DesDirectory +"\\"+temp.getName());
 
             InputStream in = new BufferedInputStream(new FileInputStream(singleFile));
-            OutputStream out = new BufferedOutputStream(new FileOutputStream(DesDirectory + "\\" + temp.getName()));
+            OutputStream out = new BufferedOutputStream(new FileOutputStream(DesDirectory
+                    + "\\" + temp.getName()));
             int data = -1;
             while ((data = in.read()) > -1) {
                 out.write(data + secret);
@@ -334,7 +341,6 @@ public class TransferAndRecovery {
             out.close();
             in.close();
         }
-
 
     }
 

@@ -39,7 +39,9 @@ public class S3Encrypt {
      * of the data can be no longer than 64 GB.
      */
     // snippet-start:[s3.java1.s3_encrypt.authenticated_encryption]
-    public void authenticatedEncryption_CustomerManagedKey(String BUCKET_NAME, String ENCRYPTED_KEY, String NON_ENCRYPTED_KEY,String object) throws NoSuchAlgorithmException {
+    public void authenticatedEncryption_CustomerManagedKey(String BUCKET_NAME, String ENCRYPTED_KEY,
+                                                           String NON_ENCRYPTED_KEY,String object)
+            throws NoSuchAlgorithmException {
         // snippet-start:[s3.java1.s3_encrypt.authenticated_encryption_build]
 
         SecretKey secretKey = KeyGenerator.getInstance("AES").generateKey();
@@ -51,12 +53,11 @@ public class S3Encrypt {
                 .build();
 
         AmazonS3 s3NonEncrypt = AmazonS3ClientBuilder.standard().withRegion(Regions.AP_NORTHEAST_2).build();
-        // snippet-end:[s3.java1.s3_encrypt.authenticated_encryption_build]
+
 
         s3Encryption.putObject(BUCKET_NAME, ENCRYPTED_KEY, object);
         s3NonEncrypt.putObject(BUCKET_NAME, NON_ENCRYPTED_KEY, object);
-        //System.out.println(s3Encryption.getObjectAsString(BUCKET_NAME, ENCRYPTED_KEY));
-        // System.out.println(s3Encryption.getObjectAsString(BUCKET_NAME, NON_ENCRYPTED_KEY));
+
     }
     // snippet-end:[s3.java1.s3_encrypt.authenticated_encryption]
 

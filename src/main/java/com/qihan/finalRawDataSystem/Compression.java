@@ -58,13 +58,12 @@ public class Compression {
 
         try {
             ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(zipFile));
-            for (int i = 0; i < filesAfterSift.size(); i++) {
-                String relativePath = filesAfterSift.get(i);
+            for (String relativePath : filesAfterSift) {
                 if (StringUtils.isEmpty(relativePath)) {
                     continue;
                 }
                 File sourceFile = new File(relativePath);//绝对路径找到file
-                if (sourceFile == null || !sourceFile.exists()) {
+                if (!sourceFile.exists()) {
                     continue;
                 }
                 FileInputStream fis = new FileInputStream(sourceFile);
@@ -83,7 +82,6 @@ public class Compression {
                 zos.flush();
                 zos.closeEntry();
                 fis.close();
-
             }
             zos.close();
             //System.out.println("压缩完成");

@@ -52,7 +52,6 @@ public class LocationAndTagging {
         String wholeSize;
 
         if (newFile.isFile()) {
-
             String fileSize;
             String Type = FileTypeUtil.getType(newFile);
             switch (Type) {
@@ -114,17 +113,35 @@ public class LocationAndTagging {
                 if (value.isFile()) {
                     String fileSize;
                     String Type = FileTypeUtil.getType(value);
-                    if (Type.equals("jpg") || Type.equals("png") || Type.equals("gif") || Type.equals("tif") || Type.equals("bmp")
-                            || Type.equals("dwg") || Type.equals("psd")) {
-                        this.graphFiles.add(value.toString());
-                    } else if (Type.equals("txt") || Type.equals("rtf") || Type.equals("ini") || Type.equals("log")) {
-                        this.textFiles.add(value.toString());
-                    } else if (Type.equals("mp3") || Type.equals("wma") || Type.equals("wav")) {
-                        this.soundFiles.add(value.toString());
-                    } else if (Type.equals("mp4") || Type.equals("rmvb") || Type.equals("avi")) {
-                        this.videoFiles.add(value.toString());
-                    } else {
-                        this.otherFiles.add(value.toString());
+                    switch (Type) {
+                        case "jpg":
+                        case "png":
+                        case "gif":
+                        case "tif":
+                        case "bmp":
+                        case "dwg":
+                        case "psd":
+                            this.graphFiles.add(value.toString());
+                            break;
+                        case "txt":
+                        case "rtf":
+                        case "ini":
+                        case "log":
+                            this.textFiles.add(value.toString());
+                            break;
+                        case "mp3":
+                        case "wma":
+                        case "wav":
+                            this.soundFiles.add(value.toString());
+                            break;
+                        case "mp4":
+                        case "rmvb":
+                        case "avi":
+                            this.videoFiles.add(value.toString());
+                            break;
+                        default:
+                            this.otherFiles.add(value.toString());
+                            break;
                     }
 
                     if (value.length() < 1024) {
