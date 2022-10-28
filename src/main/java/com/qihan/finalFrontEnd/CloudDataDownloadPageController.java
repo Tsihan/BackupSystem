@@ -103,7 +103,7 @@ public class CloudDataDownloadPageController implements Initializable {
         }
 
         if (DesDirectory == null) {
-            manipulationResultLabel.setText("You haven't selected download mode!");
+            manipulationResultLabel.setText("You haven't selected the destination directory!");
             return;
         }
         String s3_name = "user-" + USER_ID + "-bucket";
