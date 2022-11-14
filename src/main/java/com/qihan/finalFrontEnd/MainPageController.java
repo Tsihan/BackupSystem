@@ -164,6 +164,7 @@ public class MainPageController implements Initializable {
             directToCommonUserPage();
             System.out.println("aaa");
         } else {
+            loginMessageLabel.setFont(Font.font("Times New Roman"));
             loginMessageLabel.setText("Invalid login!");
             System.out.println("bbb");
 
