@@ -162,11 +162,11 @@ public class MainPageController implements Initializable {
         if (hasResult) {
             //loginMessageLabel.setText("Congratulations!");
             directToCommonUserPage();
-            System.out.println("aaa");
+            System.out.println("Found!");
         } else {
             loginMessageLabel.setFont(Font.font("Times New Roman"));
             loginMessageLabel.setText("Invalid login!");
-            System.out.println("bbb");
+            System.out.println("No result!");
 
         }
 
